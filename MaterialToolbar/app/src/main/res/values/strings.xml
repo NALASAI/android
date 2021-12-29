@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">MaterialToolbar</string>
+    <string name="str_favorite">favorite</string>
+    <string name="str_search">search</string>
+    <string name="str_more">more</string>
+    <string name="page_title">title</string>
+    <string name="header_title">header_title</string>
+</resources>

@@ -1,0 +1,19 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        // 중요 부분 그래이들 언어 버젼
+        // 외부에서 필요한 라이브러리를 가지고 오는데, 이 부분에서 관리한다.
+        classpath "com.android.tools.build:gradle:7.0.4"
+        // 그래이들 7.0.4 버전이 여기서 사용하는 안드로이드 프로젝트를 컴파일 하고 있다.
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

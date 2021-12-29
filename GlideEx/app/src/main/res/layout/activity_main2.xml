@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <HorizontalScrollView
+        android:scrollbars="none"
+        android:fillViewport="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/glideImageView1"
+                android:layout_marginEnd="20dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"/>
+            <ImageView
+                android:id="@+id/glideImageView2"
+                android:layout_marginEnd="20dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"/>
+            <ImageView
+                android:id="@+id/glideImageView3"
+                android:layout_marginEnd="20dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"/>
+            <ImageView
+                android:id="@+id/glideImageView4"
+                android:layout_marginEnd="20dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"/>
+            <ImageView
+                android:id="@+id/glideImageView5"
+                android:layout_marginEnd="20dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"/>
+            <ImageView
+                android:id="@+id/glideImageView6"
+                android:layout_marginEnd="20dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"/>
+            <ImageView
+                android:id="@+id/glideImageView7"
+                android:layout_marginEnd="20dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"/>
+            <ImageView
+                android:id="@+id/glideImageView8"
+                android:layout_marginEnd="20dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"/>
+
+        </LinearLayout>
+    </HorizontalScrollView>
+
+</LinearLayout>
