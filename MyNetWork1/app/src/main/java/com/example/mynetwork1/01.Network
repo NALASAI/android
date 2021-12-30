@@ -1,0 +1,36 @@
+
+Network : 통신
+
+dataBase <--------> Sever <--------> Client
+
+Local DataBase 의 한계
+
+- 동기화가 어렵다 (핸드폰, 태블릿)
+
+- 상호작용이 불가능하다( 남의 데이터를 볼 수 없다.)
+
+서버와 통신하는 방법
+
+- 해당 Url(uri)로 요청한다.
+
+- 인증정보를 보낸다.
+
+- Json 형식을 사용해서 data 를 보낸다.
+
+
+JSON 형식 : JavaScript Object Notation -> 자바스크립트에서 객체를 만들때 사용하는 표현식
+
+- [] -> List, 배열
+
+- {} -> 객체
+
+Json Parsing
+-> Json 을 코틀린이나 자바가 이해할 수 있도록 변형하는 과정
+
+Request Type
+
+- GET : 정보 요청
+- POST : 정보 추가 요청
+- DELETE : 정보 삭제 요청
+- PUT : 정보 수정 요청 ( 일부 필드만 전달할 경우 전달한 다른 필드 외 모두 null )
+- PATCH : 정보 수정 요청( 자원의 부분 교체, 일부 필드 교체)
