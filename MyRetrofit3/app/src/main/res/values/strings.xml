@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">MyRetrofit3</string>
+    <string name="home">Home</string>
+    <string name="myinfo">MyInfo</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="event">Event</string>
+    <string name="item_list">Item_List</string>
+    <string name="basket">Basket</string>
+</resources>
