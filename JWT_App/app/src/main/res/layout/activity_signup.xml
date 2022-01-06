@@ -44,8 +44,10 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/SignUpUserIdEt"
+                    android:text="temp1"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:inputType="text"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -63,6 +65,7 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/SignUpUserPwEt"
+                    android:text="12345"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textPassword"/>
@@ -70,11 +73,11 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/signUpUserName"
+                android:id="@+id/signUpRePassword"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
-                android:hint="사용자명 입력"
+                android:hint="비밀번호 재입력"
                 app:endIconMode="clear_text"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -82,9 +85,11 @@
                 app:startIconDrawable="@drawable/ic_baseline_person_24">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/SignUpUserNameEt"
+                    android:id="@+id/SignUpUserRePwEt"
+                    android:text="12345"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -97,13 +102,15 @@
                 app:endIconMode="clear_text"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/signUpUserName"
+                app:layout_constraintTop_toBottomOf="@id/signUpRePassword"
                 app:startIconDrawable="@drawable/ic_baseline_email_24">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/SignUpUserEmailEt"
+                    android:text="abcd"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:inputType="textEmailAddress"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -119,12 +126,12 @@
                 app:layout_constraintTop_toBottomOf="@id/signUpUserEmail" />
 
             <TextView
-                android:id="@+id/moveSignUpTv"
+                android:id="@+id/goSignInPage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="로그인 페이지로 돌아가기"
                 android:textColor="#03A9F4"
-                android:textSize="25dp"
+                android:textSize="20sp"
                 android:layout_margin="20dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@id/signUpUserId"

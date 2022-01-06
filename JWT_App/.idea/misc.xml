@@ -4,8 +4,16 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/android_workspace/JWT_App/app/src/main/res/layout/activity_login.xml" value="0.36614583333333334" />
-        <entry key="..\:/android_workspace/JWT_App/app/src/main/res/layout/activity_main.xml" value="0.36614583333333334" />
+        <entry key="..\:/android_workspace/JWT_App/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/android_workspace/JWT_App/app/src/main/res/layout/activity_signup.xml" value="0.25" />
+        <entry key="..\:/android_workspace/JWT_App/app/src/main/res/layout/activity_signup2.xml" value="0.2828125" />
+        <entry key="..\:/android_workspace/JWT_App/app/src/main/res/layout/fragment_blog_list.xml" value="0.24427083333333333" />
+        <entry key="..\:/android_workspace/JWT_App/app/src/main/res/layout/fragment_m_y_info.xml" value="0.24427083333333333" />
+        <entry key="..\:/android_workspace/JWT_App/app/src/main/res/layout/fragment_my_info.xml" value="0.1078125" />
+        <entry key="..\:/android_workspace/JWT_App/app/src/main/res/layout/fragment_user_list.xml" value="0.24427083333333333" />
+        <entry key="..\:/android_workspace/JWT_App/app/src/main/res/layout/fragment_web.xml" value="0.24427083333333333" />
+        <entry key="..\:/android_workspace/JWT_App/app/src/main/res/layout/item_blog_card.xml" value="0.24427083333333333" />
+        <entry key="..\:/android_workspace/JWT_App/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.22604166666666667" />
       </map>
     </option>
   </component>
