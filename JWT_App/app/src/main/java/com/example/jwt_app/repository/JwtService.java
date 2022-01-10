@@ -2,10 +2,13 @@ package com.example.jwt_app.repository;
 
 import com.example.jwt_app.BuildConfig;
 import com.example.jwt_app.repository.models.request.ReqLogin;
+import com.example.jwt_app.repository.models.request.ReqPost;
 import com.example.jwt_app.repository.models.request.ReqSignUp;
+import com.example.jwt_app.repository.models.response.ResDelete;
 import com.example.jwt_app.repository.models.response.ResLogin;
 import com.example.jwt_app.repository.models.response.ResPost;
 import com.example.jwt_app.repository.models.response.ResSignUp;
+import com.example.jwt_app.repository.models.response.ResUpdatePost;
 
 import java.util.concurrent.TimeUnit;
 
@@ -15,9 +18,12 @@ import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.Body;
+import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
+import retrofit2.http.Path;
 
 public interface JwtService {
 
@@ -29,6 +35,22 @@ public interface JwtService {
 
     @GET("post")
     Call<ResPost> getPostList(@Header("Authorization") String token);
+
+    @PUT("post/{postId}")
+    Call<ResUpdatePost> updatePost(@Header("Authorization") String token,
+                                   @Path("postId") int postId,
+                                   @Body ReqPost reqPost);
+
+    @DELETE("post/{postId}")
+    Call<ResDelete> deletePost(@Header("Authorization") String token,
+                               @Path("postId") int postId);
+
+    @POST("post")
+    Call<ResUpdatePost> savePost(@Header("Authorization") String token,
+                                 @Body ReqPost reqPost);
+
+    @GET("user/{myId}")
+    Call<ResLogin> myInfo(@Header("Authorization") String token, @Path("myId") int myId);
 
     // ipconfig | ifconfig
     Retrofit retrofit = new Retrofit.Builder()

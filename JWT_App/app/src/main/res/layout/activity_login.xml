@@ -45,6 +45,7 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/loginEt"
+                    android:text="drda123"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
@@ -65,6 +66,7 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/passwordEt"
+                    android:text="5678"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textPassword" />

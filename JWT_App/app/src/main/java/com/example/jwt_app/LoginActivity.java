@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.jwt_app.databinding.ActivityLoginBinding;
 import com.example.jwt_app.repository.JwtService;
 import com.example.jwt_app.repository.models.request.ReqLogin;
 import com.example.jwt_app.repository.models.response.ResLogin;
@@ -24,21 +25,23 @@ import retrofit2.Response;
 public class LoginActivity extends AppCompatActivity {
 
     static final String TAG = LoginActivity.class.getName();
+    ActivityLoginBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        binding = ActivityLoginBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
-        EditText loginEt = findViewById(R.id.loginEt);
-        EditText passwordEt = findViewById(R.id.passwordEt);
-        Button loginBtn = findViewById(R.id.loginBtn);
-        TextView moveLoginTv = findViewById(R.id.moveLoginTv);
+//        EditText loginEt = findViewById(R.id.loginEt);
+//        EditText passwordEt = findViewById(R.id.passwordEt);
+//        Button loginBtn = findViewById(R.id.loginBtn);
+//        TextView moveLoginTv = findViewById(R.id.moveLoginTv);
 
-        loginBtn.setOnClickListener(view -> {
+        binding.loginBtn.setOnClickListener(view -> {
             
-            String id = loginEt.getText().toString();
-            String pw = passwordEt.getText().toString();
+            String id = binding.loginEt.getText().toString();
+            String pw = binding.passwordEt.getText().toString();
 
             KeyboardUtil.hideKeyboard(view.getContext(), view);
 
@@ -55,6 +58,8 @@ public class LoginActivity extends AppCompatActivity {
                         SharedPreferences preferences = getSharedPreferences("token", MODE_PRIVATE);
                         SharedPreferences.Editor editor = preferences.edit();
                         editor.putString("jwt", response.headers().get("Authorization"));
+                        editor.putString("userId", resLogin.getData().getId().toString());
+                        Log.d(TAG, "JSESSIONID : " + response.headers().get("Set-Cookie"));
                         editor.apply();
 
                         Intent intent = new Intent(view.getContext(), MainActivity.class);
@@ -72,7 +77,7 @@ public class LoginActivity extends AppCompatActivity {
                 Snackbar.make(view, "연결실패", Snackbar.LENGTH_SHORT);
             }
         });
-        moveLoginTv.setOnClickListener(view -> {
+        binding.moveLoginTv.setOnClickListener(view -> {
             Intent intent = new Intent(this, SignupActivity.class);
             startActivity(intent);
         });

@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.jwt_app.databinding.ActivitySignupBinding;
 import com.example.jwt_app.repository.JwtService;
 import com.example.jwt_app.repository.models.request.ReqSignUp;
 import com.example.jwt_app.repository.models.response.ResSignUp;
@@ -22,27 +23,30 @@ import retrofit2.Response;
 
 public class SignupActivity extends AppCompatActivity {
 
-//    public static final TAG = ;
+    static final String TAG = SignupActivity.class.getName();
+
+    ActivitySignupBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        binding = ActivitySignupBinding.inflate(getLayoutInflater());
         setContentView(R.layout.activity_signup);
 
-        EditText userIdEt = findViewById(R.id.SignUpUserIdEt);
-        EditText userEmailEt = findViewById(R.id.SignUpUserEmailEt);
-        EditText passwordEt = findViewById(R.id.SignUpUserPwEt);
-        EditText rePasswordEt = findViewById(R.id.SignUpUserRePwEt);
+//        EditText userIdEt = findViewById(R.id.SignUpUserIdEt);
+//        EditText userEmailEt = findViewById(R.id.SignUpUserEmailEt);
+//        EditText passwordEt = findViewById(R.id.SignUpUserPwEt);
+//        EditText rePasswordEt = findViewById(R.id.SignUpUserRePwEt);
 
         Button signUpBtn = findViewById(R.id.SignUpBtn);
         TextView goSignInPage = findViewById(R.id.goSignInPage);
 
         signUpBtn.setOnClickListener(view -> {
             // 지역변수
-            String id = userIdEt.getText().toString();
-            String pw = passwordEt.getText().toString();
-            String rePw = rePasswordEt.getText().toString();
-            String email = userEmailEt.getText().toString();
+            String id = binding.userIdEt.getText().toString();
+            String pw = binding.passwordEt.getText().toString();
+            String rePw = binding.rePasswordEt.getText().toString();
+            String email = binding.userEmailEt.getText().toString();
 
             if(id.length() > 3 && pw.length() > 3 && email.length() > 3){
                 KeyboardUtil.hideKeyboard(view.getContext(), view);

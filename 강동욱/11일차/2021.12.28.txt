@@ -1,0 +1,11 @@
+RecyclerView : 목록을 화면에 출력해주고 동적으로 표현해주는 컨테이너
+
+장점
+- ListView 개선판(ViewHolder 개념 포함)
+- 유연하다 : LayoutManager(수평으로 리스트를 만들기 쉽다)
+- Linear, Grid, StaggeredGrid 타입으로도 만들 수 있다.
+
+1. 라이브러리 추가
+2. itemView xml 파일 생성
+3. Adapter 클래스 생성
+4. LayoutManager 생성 및 연결

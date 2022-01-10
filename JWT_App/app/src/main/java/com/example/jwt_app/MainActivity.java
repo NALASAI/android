@@ -1,61 +1,57 @@
 package com.example.jwt_app;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.content.SharedPreferences;
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import com.example.jwt_app.repository.JwtService;
+import com.example.jwt_app.interfaces.OnBlogListRefresh;
 import com.example.jwt_app.repository.models.response.ResPost;
+import com.example.jwt_app.repository.models.response.common.Data;
 import com.example.jwt_app.utils.FragmentType;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements OnBlogListRefresh {
 
     BlogListFragment blogListFragment;
     UserListFragment userListFragment;
     WebFragment webFragment;
-    MYInfoFragment myInfoFragment;
+    MyInfoFragment myInfoFragment;
     BottomNavigationView bottomNavigationView;
+
+    ActivityResultLauncher<Intent> startActivityResult = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            result -> {
+                if(result.getResultCode() == Activity.RESULT_OK){
+                    Intent resultData = result.getData();
+                    String msg = resultData.getStringExtra("msg");
+                    Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+                    // 결과가 돌아올 경우
+                    blogListFragment.listRefresh();
+                }
+            }
+    );
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        if (getIntent() != null){
+        if (getIntent() != null) {
             String msg = getIntent().getStringExtra("msg");
             Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
         }
 
-        // 토큰 : SharedPreferences
-//        SharedPreferences preferences = getSharedPreferences("token",  MODE_PRIVATE);
-//        String token = preferences.getString("jwt", "");
-//        JwtService jwtService = JwtService.retrofit.create(JwtService.class);
-//
-//        jwtService.getPostList(token).enqueue(new Callback<ResPost>() {
-//            @Override
-//            public void onResponse(Call<ResPost> call, Response<ResPost> response) {
-//
-//            }
-//
-//            @Override
-//            public void onFailure(Call<ResPost> call, Throwable t) {
-//
-//            }
-//        });
-        
         initData();
         addMenuEventListener();
         addFragment(FragmentType.BLOG_LIST);
@@ -63,10 +59,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initData() {
-        blogListFragment = new BlogListFragment();
+        blogListFragment = new BlogListFragment(this);
         userListFragment = new UserListFragment();
-        webFragment = new WebFragment();
-        myInfoFragment = new MYInfoFragment();
+        webFragment = new WebFragment(this);
+        myInfoFragment = new MyInfoFragment();
         bottomNavigationView = findViewById(R.id.bottom_navigation);
     }
 
@@ -74,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch(item.getItemId()){
+                switch (item.getItemId()) {
                     case R.id.page_1:
                         addFragment(FragmentType.BLOG_LIST);
                         break;
@@ -95,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void addFragment(FragmentType type) {
         Fragment fragment = null;
-        switch(type){
+        switch (type) {
             case BLOG_LIST:
                 fragment = blogListFragment;
                 break;
@@ -114,5 +110,21 @@ public class MainActivity extends AppCompatActivity {
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.replace(R.id.container, fragment);
         transaction.commit();
+    }
+
+    @Override
+    public void refresh(String msg) {
+        addFragment(FragmentType.BLOG_LIST);
+        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+        // 리스트를 재 갱신
+        blogListFragment.listRefresh();
+
+    }
+
+    @Override
+    public void movePage(Data data) {
+        Intent intent = new Intent(this, DetailActivity.class);
+        intent.putExtra("postData", data);
+        startActivityResult.launch(intent);
     }
 }

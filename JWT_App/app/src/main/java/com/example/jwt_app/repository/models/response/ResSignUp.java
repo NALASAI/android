@@ -1,25 +1,15 @@
 package com.example.jwt_app.repository.models.response;
 
+import com.example.jwt_app.repository.models.response.common.Data;
+import com.example.jwt_app.repository.models.response.common.Result;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class ResSignUp {
-
-    @SerializedName("code")
-    @Expose
-    private Integer code;
-
-    @SerializedName("msg")
-    @Expose
-    private String msg;
+public class ResSignUp extends Result {
 
     @SerializedName("data")
     @Expose
     private Data data;
-
-    public String getMsg() {
-        return msg;
-    }
 
     public Data getData() {
         return data;
